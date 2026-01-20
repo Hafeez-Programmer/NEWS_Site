@@ -1,13 +1,21 @@
-<?php include "header.php"; ?>
+<?php 
+include "header.php"; 
+include "../backend/get-roles.php";
+
+if ($status == false) {
+  echo "<h1> . $message . </h1>";
+  die();
+} else {
+?>
   <div id="admin-content">
       <div class="container">
           <div class="row">
-              <div class="col-md-12">
-                  <h1 class="admin-heading">Add User</h1>
+              <div class="col-md-12 m-auto">
+                  <h1 class="admin-heading text-center">Add User</h1>
               </div>
-              <div class="col-md-offset-3 col-md-6">
+              <div class="col-md-6 m-auto">
                   <!-- Form Start -->
-                  <form  action="" method ="POST" autocomplete="off">
+                  <form  action="../backend/add-user.php" method ="POST" autocomplete="off">
                       <div class="form-group">
                           <label>First Name</label>
                           <input type="text" name="fname" class="form-control" placeholder="First Name" required>
@@ -28,15 +36,27 @@
                       <div class="form-group">
                           <label>User Role</label>
                           <select class="form-control" name="role" >
-                              <option value="0">Normal User</option>
-                              <option value="1">Admin</option>
-                          </select>
+                            <?php
+                            foreach ($result as $key => $value) {
+                            ?>
+                              <option 
+                              value="<?php echo $value['rid'] ?>"
+                              >
+                              <?php echo $value['role'] ?>
+                              </option>
+                            <?php
+                            } 
+                            ?>
+                          </select required>
                       </div>
                       <input type="submit"  name="save" class="btn btn-primary" value="Save" required />
                   </form>
-                   <!-- Form End-->
-               </div>
-           </div>
-       </div>
-   </div>
-<?php include "footer.php"; ?>
+                  <!-- Form End-->
+              </div>
+          </div>
+      </div>
+  </div>
+<?php
+include "footer.php"; 
+}
+?>

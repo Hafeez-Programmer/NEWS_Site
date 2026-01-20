@@ -2,25 +2,18 @@
 try {
   include '../config/config.php';
 
-  $user_id = $_GET['userid'];
-  echo $user_id;
-  die();
+  $uid = $_REQUEST['uid'];
 
-  $sql = $conn->prepare("SELECT * FROM user INNER JOIN role ON user.role = role.rid WHERE uid = $user_id");
-  $sql->execute() or throw new Exception("Query Failed" .  $sql->errorInfo());
+  $sql = $conn->prepare("SELECT * FROM user INNER JOIN role ON user.role = role.rid WHERE user.uid = :uid");
+  $sql->execute([
+    ':uid' => $uid
+  ]) or throw new Exception("Query Failed" . $this->errorInfo());
   $result = $sql->fetch();
+  $status = true;
 
-  $output = json_encode($result);
-  echo $output;
 } catch(Exception $err) {
-  $result = [
-    "status" => false,
-    "message" => $err->getMessage(),
-  ];
-
-  $output = json_encode($result);
-  echo $output;
+  $status = false;
+  $message = $err->getMessage();
 }
-
 
 ?>

@@ -6,15 +6,15 @@ try {
   $lname = $_REQUEST['lname'];
   $uname = $_REQUEST['user'];
   $role = $_REQUEST['role'];
-  $pass = password_hash($_REQUEST['password'], PASSWORD_BCRYPT); 
+  $uid = $_REQUEST['userid'];
 
-  $sql = $conn->prepare("INSERT INTO user (firstname, lastname, username, role, password) VALUES (:firstname, :lastname, :username, :role, :password)");
+  $sql = $conn->prepare("UPDATE user SET firstname = :firstname, lastname = :lastname, username = :username, role = :role WHERE uid = :userid");
   $sql->execute([
     ':firstname' => $fname,
     ':lastname' => $lname,
     ':username' => $uname,
     ':role' => $role,
-    ':password' => $pass,
+    ':userid' => $uid,
     ]) or throw new Exception("Query Failed" . $this->errorInfo());
   
   header("Location: http://localhost/my_projects/NEWS_site/admin/users.php");

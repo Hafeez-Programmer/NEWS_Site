@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-    <head>
+   <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -13,8 +13,8 @@
     <body>
         <div id="wrapper-admin" class="body-content">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-offset-4 col-md-4">
                         <img class="logo" src="images/news.jpg">
                         <h3 class="heading">Admin</h3>
                         <!-- Form Start -->

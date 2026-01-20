@@ -1,4 +1,12 @@
-<?php include "header.php"; ?>
+<?php 
+include "header.php"; 
+include "../backend/get-users.php";
+
+if ($status == false) {
+  echo "<h1>$message</h1>";
+  die();
+} else {
+?>
   <div id="admin-content">
       <div class="container">
           <div class="row">
@@ -6,7 +14,7 @@
                   <h1 class="admin-heading">All Users</h1>
               </div>
               <div class="col-md-2">
-                  <a class="add-new" href="add-user.php">add user</a>
+                  <a class="add-new" href="add-user-form.php">add user</a>
               </div>
               <div class="col-md-12">
                   <table class="content-table">
@@ -19,38 +27,20 @@
                           <th>Delete</th>
                       </thead>
                       <tbody>
+                        <?php
+                        foreach ($result as $key => $value) {
+                        ?>
                           <tr>
-                              <td class='id'>1</td>
-                              <td>Ram Sharma</td>
-                              <td>ram</td>
-                              <td>admin</td>
-                              <td class='edit'><a href='update-user.php'><i class='fa fa-edit'></i></a></td>
-                              <td class='delete'><a href='delete-user.php'><i class='fa fa-trash-o'></i></a></td>
+                              <td class='id'><?php echo $value['uid'] ?></td>
+                              <td><?php echo $value['firstname'] . $value['lastname'] ?></td>
+                              <td><?php echo $value['username'] ?></td>
+                              <td><?php echo $value['role'] ?></td>
+                              <td class='edit'><a href='update-user-form.php?uid=<?php echo $value['uid'] ?></a>'><i class='fa fa-edit'></i></a></td>
+                              <td class='delete'><a href='../backend/delete-user.php?did=<?php echo $value['uid'] ?></a>'><i class='fa fa-trash-o'></i></a></td>
                           </tr>
-                          <tr>
-                              <td class='id'>2</td>
-                              <td>Shyam Kumar</td>
-                              <td>shyam</td>
-                              <td>normal</td>
-                              <td class='edit'><a href='update-user.php'><i class='fa fa-edit'></i></a></td>
-                              <td class='delete'><a href='delete-user.php'><i class='fa fa-trash-o'></i></a></td>
-                          </tr>
-                          <tr>
-                              <td class='id'>3</td>
-                              <td>Ramesh Kumar</td>
-                              <td>ramesh</td>
-                              <td>admin</td>
-                              <td class='edit'><a href='update-user.php'><i class='fa fa-edit'></i></a></td>
-                              <td class='delete'><a href='delete-user.php'><i class='fa fa-trash-o'></i></a></td>
-                          </tr>
-                          <tr>
-                              <td class='id'>4</td>
-                              <td>Satish Sharma</td>
-                              <td>satish</td>
-                              <td>admin</td>
-                              <td class='edit'><a href='update-user.php'><i class='fa fa-edit'></i></a></td>
-                              <td class='delete'><a href='delete-user.php'><i class='fa fa-trash-o'></i></a></td>
-                          </tr>
+                          <?php
+                          }     
+                          ?>
                       </tbody>
                   </table>
                   <ul class='pagination admin-pagination'>
@@ -62,4 +52,8 @@
           </div>
       </div>
   </div>
-<?php include "header.php"; ?>
+<?php 
+include "footer.php"; 
+}
+?>
+
