@@ -32,11 +32,11 @@ if ($status == false) {
                         ?>
                           <tr>
                               <td class='id'><?php echo $value['uid'] ?></td>
-                              <td><?php echo $value['firstname'] . $value['lastname'] ?></td>
+                              <td><?php echo $value['firstname'] . " " . $value['lastname'] ?></td>
                               <td><?php echo $value['username'] ?></td>
                               <td><?php echo $value['role'] ?></td>
                               <td class='edit'><a href='update-user-form.php?uid=<?php echo $value['uid'] ?></a>'><i class='fa fa-edit'></i></a></td>
-                              <td class='delete'><a href='../backend/delete-user.php?did=<?php echo $value['uid'] ?></a>'><i class='fa fa-trash-o'></i></a></td>
+                              <td class='delete'><a href='../backend/delete-user.php?uid=<?php echo $value['uid'] ?></a>'><i class='fa fa-trash-o'></i></a></td>
                           </tr>
                           <?php
                           }     

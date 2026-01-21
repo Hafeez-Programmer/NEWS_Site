@@ -2,7 +2,7 @@
 try {
   include '../config/config.php';
 
-  $uid = $_REQUEST['did'];
+  $uid = $_REQUEST['uid'];
 
   $sql = $conn->prepare("DELETE FROM user WHERE uid = :userid");
   $sql->execute([

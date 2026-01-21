@@ -6,7 +6,7 @@
                   <h1 class="admin-heading">All Posts</h1>
               </div>
               <div class="col-md-2">
-                  <a class="add-new" href="add-post.php">add post</a>
+                  <a class="add-new" href="add-post-form.php">add post</a>
               </div>
               <div class="col-md-12">
                   <table class="content-table">

@@ -7,10 +7,10 @@
               </div>
               <div class="col-md-offset-3 col-md-6">
                   <!-- Form Start -->
-                  <form action="" method="POST" autocomplete="off">
+                  <form action="../backend/add-category.php" method="POST" autocomplete="off">
                       <div class="form-group">
                           <label>Category Name</label>
-                          <input type="text" name="cat" class="form-control" placeholder="Category Name" required>
+                          <input type="text" name="category" class="form-control" placeholder="Category Name" required>
                       </div>
                       <input type="submit" name="save" class="btn btn-primary" value="Save" required />
                   </form>
